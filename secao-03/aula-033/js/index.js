@@ -14,3 +14,9 @@ console.log('');
 
 console.log(true || false || false || false || false);
 console.log(false || false || false || false || false);
+
+console.log('');
+
+console.log(!false);
+console.log(false);
+console.log(!!true);
