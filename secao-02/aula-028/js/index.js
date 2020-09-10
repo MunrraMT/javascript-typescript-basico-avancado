@@ -1,73 +1,57 @@
-// VARIÁVEL CONST SENDO MODIFICADA SEM USAR SINAL DE IGUAL
-const myArray = [1, 2, 3];
-myArray.push(4);
-myArray[0] = 'Luiz';
-console.log(myArray);
+// DADOS PRIMITIVOS (IMUTÁVEL):
+// STRING, NUMBER, BOOLEAN, UNDEFINED,  NULL (BIGINT, SYMBOL)
+
+// VALOR FOI TROCADO E NÃO MODIFICADO
+let nome = 'Luiz';
+nome = 'Otávio';
+console.log(nome);
+
+// VALOR IMULTÁVEL
+nome = 'Luiz';
+nome[0] = 'R';
+console.log(nome[0], nome);
+
+// VALORES PRIMITIVOS SÃO COPIADOS
+let a = 'A';
+let b = a;
+console.log(a, b);
+a = 'Outra coisa';
+console.log(a, b);
 
 console.log('');
 
-// AGRUPANDO COM OBJETOS
-const nome01 = 'Luiz';
-const sobrenome01 = 'Miranda';
-const idade01 = 25;
+// DADOS POR REFERÊNCIA (MUTÁVEL):
+// ARRAYS, OBJECT, FUNCTION
 
-const pessoal1 = {
-	nome: 'Luiz',
-	sobrenome: 'Miranda',
-	idade: 25,
-};
-console.log(pessoal1.nome);
-
-console.log('');
-
-// CRIANDO OBJETOS COM FUNÇÃO
-function criarPessoaA(nome, sobrenome, idade) {
-	return {
-		nome: nome,
-		sobrenome: sobrenome,
-		idade: idade,
-	};
-}
-let pessoalA = criarPessoaA('Luiz', 'Miranda', 25);
-let pessoalB = criarPessoaA('André', 'Rodrigues', 30);
-let pessoalC = criarPessoaA('Camila Maria', 'Martinho', 26);
-console.log(pessoalA);
-console.log(pessoalB);
-console.log(pessoalC);
+let c = [1, 2, 3];
+let d = c;
+console.log(c, d);
+c.push(4);
+console.log(c, d);
+d.pop();
+console.log(c, d);
 
 console.log('');
 
-// CRIANDO OBJETOS COM FUNÇÃO, RETORNO DE  OBJETOS SIMPLIFICADO
-function criarPessoaB(nome, sobrenome, idade) {
-	return { nome, sobrenome, idade };
-}
-pessoalA = criarPessoaB('Luiz', 'Miranda', 25);
-pessoalB = criarPessoaB('André', 'Rodrigues', 30);
-pessoalC = criarPessoaB('Camila Maria', 'Martinho', 26);
-console.log(pessoalA);
-console.log(pessoalB);
-console.log(pessoalC);
+// COPIA COM DADO POR REFERÊNCIA, PARA ARRAY
+c = [1, 2, 3];
+d = c;
+let e = [...c]; //CÓPIA
+console.log(c, d, e);
+c.push(4);
+console.log(c, d, e);
 
 console.log('');
 
-// CRIANDO MÉTODO EM OBJETO
+// COPIA COM DADO POR REFERÊNCIA, PARA OBJETOS
 const pessoaA = {
 	nome: 'Luiz',
-	sobrenome: 'Miranda',
-	idade: 25,
-
-	fala() {
-		console.log(
-			`Meu nome é ${this.nome} ${this.sobrenome} e tenho ${this.idade} anos!`
-		);
-	},
-
-	incrementaIdade() {
-		this.idade++;
-	},
+	sobrenome: 'Otávio',
 };
-pessoaA.fala();
-pessoaA.incrementaIdade();
-pessoaA.fala();
-pessoaA.incrementaIdade();
-pessoaA.fala();
+const pessoaB = pessoaA;
+console.log(pessoaB, pessoaA);
+pessoaA.nome = 'João';
+console.log(pessoaB, pessoaA);
+const pessoaC = { ...pessoaA }; //CÓPIA
+pessoaA.nome = 'Maria';
+console.log(pessoaB, pessoaA, pessoaC);
