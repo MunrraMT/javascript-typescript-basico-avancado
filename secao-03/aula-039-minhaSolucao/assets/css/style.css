@@ -63,3 +63,20 @@ form button:hover {
 form button:active {
 	background-color: red;
 }
+
+table {
+	width: 100%;
+	text-align: left;
+}
+
+.resultado {
+	text-align: center;
+	background-color: rgb(27, 233, 216);
+	line-height: 50px;
+}
+
+.errado {
+	text-align: center;
+	background-color: rgb(233, 27, 27);
+	line-height: 50px;
+}

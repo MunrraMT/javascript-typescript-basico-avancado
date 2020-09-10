@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Modelo</title>
+		<link
+			rel="shortcut icon"
+			href="https://static.vecteezy.com/system/resources/previews/000/626/123/non_2x/thumbs-up-icon-vector-symbol-in-flat-style.jpg"
+			type="image/x-icon"
+		/>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body>
+		<section class="container">
+			<h1>Tabela IMC</h1>
+
+			<table>
+				<thead>
+					<tr>
+						<th>IMC</th>
+						<th>Resultado</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>Menos do que 18,5</td>
+						<td>Abaixo do peso</td>
+					</tr>
+					<tr>
+						<td>Entre 18,5 e 24,9</td>
+						<td>Peso normal</td>
+					</tr>
+					<tr>
+						<td>Entre 25 e 29,9</td>
+						<td>Sobrepeso</td>
+					</tr>
+					<tr>
+						<td>Entre 30 e 34,9</td>
+						<td>Obesidade grau 1</td>
+					</tr>
+					<tr>
+						<td>Entre 35 e 39,9</td>
+						<td>Obesidade grau 2</td>
+					</tr>
+					<tr>
+						<td>Mais do que 40</td>
+						<td>Obesidade grau 3</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2>Calcule seu IMC</h2>
+
+			<form action="" id="form">
+				<label for="peso">Peso(Kg):</label>
+				<input type="text" id="peso" />
+
+				<label for="altura">Altura(m):</label>
+				<input type="text" id="altura" />
+
+				<button>Calcular</button>
+			</form>
+
+			<div class="resultado" id="resultado"></div>
+			<div class="errado" id="errado"></div>
+		</section>
+
+		<script src="./assets/js/main.js"></script>
+	</body>
+</html>
