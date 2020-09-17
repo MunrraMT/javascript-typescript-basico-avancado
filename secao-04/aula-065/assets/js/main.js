@@ -1,30 +1,56 @@
-// Escopo Léxico
+// Retorno de Funções (return)
+// Retorna um valor
+// Termina a função
 
-const nome1 = 'Luiz';
-function falaNome1() {
-	console.log(nome1);
+function soma(a, b) {
+	return a + b;
 }
-function usaFalaNome1() {
-	falaNome1();
-}
-usaFalaNome1(); // 'Luiz'
 
-const nome2 = 'Luiz';
-function falaNome2() {
-	const nome2 = 'Otávio';
-	console.log(nome2);
+function soma2(a, b) {
+	console.log(a + b);
 }
-function usaFalaNome2() {
-	falaNome2();
-}
-usaFalaNome2(); // 'Otávio'
+soma2(5, 2); // 7
 
-const nome3 = 'Luiz';
-function falaNome3() {
-	console.log(nome3);
+function falaFrase(comeco) {
+	function falaResto(resto) {
+		return comeco + ' ' + resto;
+	}
+	return falaResto;
 }
-function usaFalaNome3() {
-	const nome3 = 'Otávio';
-	falaNome3();
+
+const olaMundo = falaFrase('Olá');
+console.log(olaMundo('mundo!')); // Olá mundo!
+
+const fala = falaFrase('Olá');
+const resto = fala('mundo!');
+console.log(resto); // Olá mundo!
+
+function duplica(n) {
+	return n * 2;
 }
-usaFalaNome3(); // 'Luiz'
+
+function triplica(n) {
+	return n * 3;
+}
+
+function quadriplica(n) {
+	return n * 4;
+}
+
+console.log(duplica(2)); // 4
+console.log(triplica(2)); // 6
+console.log(quadriplica(2)); //8
+
+function criaMultiplicador(multriplicador) {
+	return function (n) {
+		return n * multriplicador;
+	};
+}
+
+const duplica2 = criaMultiplicador(2);
+const triplica2 = criaMultiplicador(3);
+const quadriplica2 = criaMultiplicador(4);
+
+console.log(duplica2(2)); // 4
+console.log(triplica2(2)); // 6
+console.log(quadriplica2(2)); //8
