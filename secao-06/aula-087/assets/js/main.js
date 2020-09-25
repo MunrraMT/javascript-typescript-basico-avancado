@@ -1,49 +1,83 @@
-// Object.defineProperty() com GETTER E SETTER
+// COPIANDO UM OBJETO COM SPREAD OPERATOR
+// Não cria cópia como referência
+let produto = { nome: 'Caneca', preco: 1.8 };
+let outraCoisa = { ...produto, material: 'couro' };
 
-// Construct Function
-function Produto1(nome, preco, estoque) {
-	this.nome = nome;
-	this.preco = preco;
+produto.nome = 'Bola';
 
-	Object.defineProperty(this, 'estoque', {
-		enumerable: true,
-		configurable: false,
-		// O GETTER substitui o uso do value
-		get: function () {
-			return `Valor atual é ${estoque}`;
-		},
-		// O SETTER substitui o uso do writable
-		set: function (valor) {
-			if (typeof valor !== 'number') {
-				throw new TypeError('Valor Inválido');
-			}
-			estoque = valor;
-		},
-	});
+console.log(produto); // { nome: 'Bola', preco: 1.8 }
+console.log(outraCoisa); // { nome: 'Caneca', preco: 1.8, material: 'couro' }
+
+// COPIANDO UM OBJETO COM Object.assign()
+// Não cria cópia como referência
+produto = { nome: 'Caneca', preco: 1.8 };
+outraCoisa = Object.assign({}, produto, { material: 'couro' });
+
+produto.nome = 'Bola';
+
+console.log(produto); // { nome: 'Bola', preco: 1.8 }
+console.log(outraCoisa); // { nome: 'Caneca', preco: 1.8, material: 'couro' }
+
+// Object.getOwnPropertyDescriptor()
+// Mostra as configurações de uma propriedade de um objeto
+console.log(Object.getOwnPropertyDescriptor(produto, 'nome'));
+/*
+{
+    value: 'Bola',
+    writable: true, <<<
+    enumerable: true,
+    configurable: true
 }
-const p1 = new Produto1('Camiseta', 20, 3);
-console.log(p1); // Produto1 { nome: 'Camiseta', preco: 20, estoque: [Getter/Setter] }
-p1.estoque = 'Teste estoque';
-console.log(p1.estoque); // Valor inválido! // Valor atual é 3
-p1.estoque = 10;
-console.log(p1.estoque); // Valor atual é 10
+*/
 
-// Factory Function
-function criaProduto(nome) {
-	return {
-		get nome() {
-			return nome;
-		},
-		set nome(valor) {
-			if (typeof valor !== 'string') throw new TypeError('Nome Inválido');
-			nome = valor;
-		},
-	};
+// Object.defineProperty()
+// MODIFICA CONFIGURAÇÕES DA PROPRIEDADE DO OBJETO
+Object.defineProperty(produto, 'nome', {
+	writable: false,
+});
+console.log(Object.getOwnPropertyDescriptor(produto, 'nome'));
+/*
+{
+    value: 'Bola',
+    writable: false, <<<
+    enumerable: true,
+    configurable: true
 }
-const p2 = criaProduto('Tênis');
-console.log(p2);
-console.log(p2.nome); // Tênis
-p2.nome = 'Sapato';
-console.log(p2.nome); // Sapato
-p2.nome = 25;
-console.log(p2.nome); // Nome inválido! // Sapato
+*/
+
+// RETORNAR ARRAY COM VALORES DAS PROPRIEDADES DE UM OBJETO
+
+// FUNÇÃO EM ESTADO EXPERIMENTAL = (93.98% de Compatibilidade de Navegadores)
+produto = { nome: 'Caneca', preco: 1.8, material: 'porcelana' };
+console.log(Object.values(produto)); // [ 'Caneca', 1.8, 'porcelana' ]
+
+// MESMA SOLUÇÃO COM (FOR OF)
+produto = { nome: 'Caneca', preco: 1.8, material: 'porcelana' };
+const arrayDeValores = [];
+for (const i in produto) {
+	arrayDeValores.push(produto[i]);
+}
+console.log(arrayDeValores); // [ 'Caneca', 1.8, 'porcelana' ]
+
+// RETORNAR ARRAY DE CHAVES E VALORES DAS PROPRIEDADES DE UM OBJETO
+
+// FUNÇÃO EM ESTADO EXPERIMENTAL = (93.98% de Compatibilidade de Navegadores)
+produto = { nome: 'Caneca', preco: 1.8, material: 'porcelana' };
+console.log(Object.entries(produto)); // [ [ 'nome', 'Caneca' ], [ 'preco', 1.8 ], [ 'material', 'porcelana' ] ]
+
+// EM ARRAYS SEPARADOS POR CHAVE/VALOR
+for (const entry of Object.entries(produto)) {
+	console.log(entry);
+}
+/*
+[ 'nome', 'Caneca' ]
+[ 'preco', 1.8 ]
+[ 'material', 'porcelana' ]
+*/
+
+// EM ARRAY COM TODAS AS CHAVES DO OBJETO
+const chavesProduto = [];
+for (const i in produto) {
+	chavesProduto.push(i);
+}
+console.log(chavesProduto); // [ 'nome', 'preco', 'material' ]
