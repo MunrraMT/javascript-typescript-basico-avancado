@@ -85,6 +85,24 @@ function cpfValidator() {
 		return cpf.slice(0, 11);
 	}
 
+	function isValid(result) {
+		if (cpfOriginal.length === 11 && result) {
+			resultMsg.innerText = 'CPF Válido!';
+			resultMsg.style.backgroundColor = 'green';
+		} else {
+			resultMsg.innerText = 'CPF Inválido!';
+			resultMsg.style.backgroundColor = 'red';
+		}
+	}
+
+	function comparator(cpf) {
+		const firstDigit = calcDigitA(cpf);
+		const lastDigit = calcDigitB(cpf);
+		const digitis = `${firstDigit}${lastDigit}`;
+
+		return cpfOriginal.slice(-2).join('') === digitis;
+	}
+
 	function calcDigitA(cpf) {
 		let multiplicador = 10;
 		const cpfSemDigito = cpf.slice(0, 9);
@@ -94,7 +112,7 @@ function cpfValidator() {
 			return acumulador;
 		}, 0);
 		const cpfPrimeiroDigito = () => 11 - (cpfMultiplicado % 11);
-		return cpfPrimeiroDigito();
+		return digitoZero(cpfPrimeiroDigito());
 	}
 
 	function calcDigitB(cpf) {
@@ -106,25 +124,7 @@ function cpfValidator() {
 			return acumulador;
 		}, 0);
 		const cpfSegundoDigito = () => 11 - (cpfMultiplicado % 11);
-		return cpfSegundoDigito();
-	}
-
-	function comparator(cpf) {
-		const firstDigit = calcDigitA(cpf);
-		const lastDigit = calcDigitB(cpf);
-		const digitis = `${firstDigit}${lastDigit}`;
-
-		return cpfOriginal.slice(-2).join('') === digitis;
-	}
-
-	function isValid(result) {
-		if (result) {
-			resultMsg.innerText = 'CPF Válido!';
-			resultMsg.style.backgroundColor = 'green';
-		} else {
-			resultMsg.innerText = 'CPF Inválido!';
-			resultMsg.style.backgroundColor = 'red';
-		}
+		return digitoZero(cpfSegundoDigito());
 	}
 
 	function organizarCPF(cpfInput) {
@@ -134,6 +134,11 @@ function cpfValidator() {
 		const quartaParte = cpfInput.join('').slice(9, 11);
 		const cpfFormated = `${primeiraParte}.${segundaParte}.${terceiraParte}-${quartaParte}`;
 		return cpfFormated;
+	}
+
+	function digitoZero(digito) {
+		if (digito > 9) return 0;
+		return digito;
 	}
 }
 cpfValidator();
