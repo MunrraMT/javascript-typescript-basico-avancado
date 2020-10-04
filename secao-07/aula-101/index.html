@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Modelo</title>
+		<link
+			rel="shortcut icon"
+			href="https://static.vecteezy.com/system/resources/previews/000/626/123/non_2x/thumbs-up-icon-vector-symbol-in-flat-style.jpg"
+			type="image/x-icon"
+		/>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body>
+		<section class="container" id="container">
+			<h1>Formulário de Cadastro</h1>
+
+			<ul>
+				<li>Nenhum campo pode estar vazio</li>
+				<li>Usuário só poderá conter letras e/ou números</li>
+				<li>Usuário deverá ter entre 3 e 12 caracteres</li>
+				<li>Senha precisa ter entre 6 e 12 caracteres</li>
+			</ul>
+
+			<form action="" method="post" class="formulario">
+				<label> Nome </label>
+				<input type="text" name="" class="validar nome" />
+				<label> Sobrenome </label>
+				<input type="text" name="" class="validar sobrenome" />
+				<label> CPF </label>
+				<input type="text" name="" class="validar cpf" />
+				<label> Usuário </label>
+				<input type="text" name="" class="validar usuario" />
+				<label> Senha </label>
+				<input type="password" name="" class="validar senha" />
+				<label> Repetir Senha </label>
+				<input type="password" name="" class="validar repetir-senha" />
+
+				<button type="submit">Enviar</button>
+			</form>
+		</section>
+
+		<script src="./assets/js/validaCPF.js"></script>
+		<script src="./assets/js/main.js"></script>
+	</body>
+</html>
