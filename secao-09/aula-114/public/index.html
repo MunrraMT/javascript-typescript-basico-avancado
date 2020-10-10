@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Modelo Webpack</title>
+		<link
+			rel="shortcut icon"
+			href="https://static.vecteezy.com/system/resources/previews/000/626/123/non_2x/thumbs-up-icon-vector-symbol-in-flat-style.jpg"
+			type="image/x-icon"
+		/>
+	</head>
+	<body>
+		<section class="container" id="container">
+			<h1>Gerador de Senhas</h1>
+
+			<div class="senha-gerada">Selecione as opções</div>
+
+			<form action="">
+				<label>
+					<p>Quantidade de caracteres</p>
+					<input
+						type="number"
+						min="1"
+						max="50"
+						class="qtd-caracteres"
+						value="6"
+					/>
+				</label>
+
+				<label>
+					<p>Adicionar maiúsculas</p>
+					<input type="checkbox" class="chk-maiusculas" checked />
+				</label>
+
+				<label>
+					<p>Adicionar minúsculas</p>
+					<input type="checkbox" class="chk-minusculas" checked />
+				</label>
+
+				<label>
+					<p>Adicionar números</p>
+					<input type="checkbox" class="chk-numeros" checked />
+				</label>
+
+				<label>
+					<p>Adicionar símbolos</p>
+					<input type="checkbox" class="chk-simbolos" checked />
+				</label>
+
+				<button type="submit" class="gerar-senha">Gerar Senha</button>
+			</form>
+		</section>
+		<script src="./assets/js/bundle.js"></script>
+	</body>
+</html>
