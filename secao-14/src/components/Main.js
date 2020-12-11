@@ -2,11 +2,22 @@ import React from 'react';
 import './Main.css';
 
 // form
+// eslint-disable-next-line import/no-duplicates
 import { FaPlus } from 'react-icons/fa';
+
+// tarefas
+// eslint-disable-next-line import/no-duplicates
+import { FaEdit, FaWindowClose } from 'react-icons/fa';
 
 class Main extends React.Component {
   state = {
     novaTarefa: '',
+    tarefas: [
+      'Fazer café',
+      'Beber água',
+      'Estudar Javascript',
+      'Estudar ReactJS',
+    ],
   };
 
   handleChange = (e) => {
@@ -16,7 +27,7 @@ class Main extends React.Component {
   };
 
   render() {
-    const { novaTarefa } = this.state;
+    const { novaTarefa, tarefas } = this.state;
 
     return (
       <div className="main">
@@ -27,6 +38,18 @@ class Main extends React.Component {
             <FaPlus />
           </button>
         </form>
+
+        <ul className="tarefas">
+          {tarefas.map((tarefa) => (
+            <li key={tarefa}>
+              {tarefa}
+              <div>
+                <FaEdit className="edit" />
+                <FaWindowClose className="delete" />
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
