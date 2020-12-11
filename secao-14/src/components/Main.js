@@ -1,13 +1,12 @@
 import React from 'react';
 import './Main.css';
 
-// function Main() {
-//   return <h1>Meu component com estado!</h1>;
-// }
+// form
+import { FaPlus } from 'react-icons/fa';
 
 class Main extends React.Component {
   state = {
-    novaTarefa: 'Lista de tarefas',
+    novaTarefa: '',
   };
 
   handleChange = (e) => {
@@ -21,10 +20,12 @@ class Main extends React.Component {
 
     return (
       <div className="main">
-        <h1>{novaTarefa || 'Lista de tarefas'}</h1>
-        <form action="#">
-          <input onChange={this.handleChange} type="text" />
-          <button type="submit">Enviar</button>
+        <h1>Lista de tarefas</h1>
+        <form className="form" action="#">
+          <input onChange={this.handleChange} type="text" value={novaTarefa} />
+          <button type="submit">
+            <FaPlus />
+          </button>
         </form>
       </div>
     );
