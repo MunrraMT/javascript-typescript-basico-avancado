@@ -16,6 +16,24 @@ class Main extends React.Component {
     index: -1,
   };
 
+  componentDidMount() {
+    const tarefas = JSON.parse(localStorage.getItem('tarefas'));
+
+    if (!tarefas) return;
+
+    this.setState({
+      tarefas,
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { tarefas } = this.state;
+
+    if (tarefas === prevState.tarefas) return;
+
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -24,6 +42,7 @@ class Main extends React.Component {
 
     novaTarefa = novaTarefa.trim();
 
+    if (novaTarefa === '') return;
     if (tarefas.indexOf(novaTarefa) !== -1) return;
 
     const novasTarefas = [...tarefas];
@@ -76,12 +95,7 @@ class Main extends React.Component {
         <h1>Lista de tarefas</h1>
 
         <form onSubmit={this.handleSubmit} className="form" action="#">
-          <input
-            className="input"
-            onChange={this.handleChange}
-            type="text"
-            value={novaTarefa}
-          />
+          <input onChange={this.handleChange} type="text" value={novaTarefa} />
           <button type="submit">
             <FaPlus />
           </button>
