@@ -74,3 +74,8 @@
   cursor: pointer;
   transition: all 0.2s;
 }
+
+.tarefas li span {
+  display: flex;
+  align-items: center;
+}
