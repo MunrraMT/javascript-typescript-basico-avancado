@@ -1,15 +1,9 @@
 import React from 'react';
+import Form from './Form';
+import Tarefas from './Tarefas';
 import './Main.css';
 
-// form
-// eslint-disable-next-line import/no-duplicates
-import { FaPlus } from 'react-icons/fa';
-
-// tarefas
-// eslint-disable-next-line import/no-duplicates
-import { FaEdit, FaWindowClose } from 'react-icons/fa';
-
-class Main extends React.Component {
+export default class Main extends React.Component {
   state = {
     novaTarefa: '',
     tarefas: [],
@@ -57,6 +51,7 @@ class Main extends React.Component {
 
       this.setState({
         tarefas: [...novasTarefas],
+        novaTarefa: '',
         index: -1,
       });
     }
@@ -93,34 +88,17 @@ class Main extends React.Component {
     return (
       <div className="main">
         <h1>Lista de tarefas</h1>
-
-        <form onSubmit={this.handleSubmit} className="form" action="#">
-          <input onChange={this.handleChange} type="text" value={novaTarefa} />
-          <button type="submit">
-            <FaPlus />
-          </button>
-        </form>
-
-        <ul className="tarefas">
-          {tarefas.map((tarefa, index) => (
-            <li key={tarefa}>
-              {tarefa}
-              <span>
-                <FaEdit
-                  onClick={(e) => this.handleEdit(e, index)}
-                  className="edit"
-                />
-                <FaWindowClose
-                  onClick={(e) => this.handleDelete(e, index)}
-                  className="delete"
-                />
-              </span>
-            </li>
-          ))}
-        </ul>
+        <Form
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          novaTarefa={novaTarefa}
+        />
+        <Tarefas
+          tarefas={tarefas}
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }
 }
-
-export default Main;
