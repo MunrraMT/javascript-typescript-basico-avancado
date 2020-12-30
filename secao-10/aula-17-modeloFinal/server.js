@@ -30,7 +30,8 @@ const {
 const bodyParser = require('body-parser');
 
 app.use(helmet());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 const sessionOptions = session({
