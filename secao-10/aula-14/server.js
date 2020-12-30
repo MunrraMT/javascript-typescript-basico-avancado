@@ -10,7 +10,6 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log('Conectei a base de dados!');
     app.emit('pronto');
   })
   .catch((e) => console.log(e));
