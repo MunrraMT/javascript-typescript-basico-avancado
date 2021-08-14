@@ -1,12 +1,21 @@
-exports.paginaInicial = (req, res) => {
-  res.render('index', {
-    titulo: 'Este será o título da página',
-    numeros: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  });
-  return;
+const Contato = require('../models/ContatoModel');
+
+exports.index = async (req, res) => {
+  const contatos = await Contato.buscaContatos();
+  res.render('index', { contatos });
 };
 
-exports.trataPost = (req, res) => {
-  res.send(req.body);
-  return;
+exports.delete = async function (req, res) {
+  try {
+    if (!req.params.id) return res.render('404');
+
+    const contato = await Contato.delete(req.params.id);
+    if (!contato) return res.render('404');
+
+    req.flash('success', 'Contato apagado com sucesso.');
+    req.session.save(() => res.redirect('/'));
+  } catch (error) {
+    console.log(error);
+    return res.render('404');
+  }
 };
