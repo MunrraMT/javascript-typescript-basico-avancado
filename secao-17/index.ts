@@ -1,3 +1,3 @@
-const teste = () => console.log('teste');
+const nome = 'Luiz';
 
-teste();
+console.log(nome);
