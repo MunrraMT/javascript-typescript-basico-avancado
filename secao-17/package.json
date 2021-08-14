@@ -2,5 +2,9 @@
   "name": "secao-17",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
 }
