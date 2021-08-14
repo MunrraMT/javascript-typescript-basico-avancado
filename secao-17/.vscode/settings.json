@@ -2,5 +2,5 @@
   "code-runner.executorMap": {
     "typescript": "yarn ts-node --files --transpile-only",
   },
-  "code-runner.runInTerminal": true
+  "code-runner.runInTerminal": true,
 }
