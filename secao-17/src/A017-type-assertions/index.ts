@@ -3,7 +3,7 @@ const typeAssertions = (): void => {
   const body1 = document.querySelector('body');
   if (body1) body1.textContent = 'teste';
 
-  // Non-null assertion (!)
+  // Non-null assertion (!) - não recomendado
   const body2 = document.querySelector('body')!;
   body2.textContent = 'teste';
 
