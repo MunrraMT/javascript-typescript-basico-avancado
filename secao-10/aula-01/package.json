@@ -1,15 +1,9 @@
 {
   "name": "aula-01",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "main": "index.js",
+  "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.0"
+    "axios": "^0.26.1"
   }
 }
