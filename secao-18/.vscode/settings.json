@@ -1,0 +1,6 @@
+{
+  "code-runner.executorMap": {
+    "typescript": "clear && yarn ts-node --files --transpile-only",
+  },
+  "code-runner.runInTerminal": true,
+}
